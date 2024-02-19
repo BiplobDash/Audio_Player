@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: 
   flutter_svg: 
   carousel_slider: 
+  syncfusion_flutter_gauges: 
 
 dev_dependencies:
   flutter_test:
