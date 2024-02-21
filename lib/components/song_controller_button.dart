@@ -1,4 +1,5 @@
 import 'package:audio_player/config/colors.dart';
+import 'package:audio_player/controller/song_data_controller.dart';
 import 'package:audio_player/controller/song_player_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,18 +12,38 @@ class SongControllerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     SongPlayerController songPlayerController = Get.put(SongPlayerController());
+    SongDataController songDataController = Get.put(SongDataController());
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('02:30'),
-            const Text('/'),
-            Text(
-              '02:30',
-              style: theme.textTheme.bodySmall,
-            ),
-          ],
+        Obx(
+          () => Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                songPlayerController.currentTime.value,
+                style: theme.textTheme.bodySmall,
+              ),
+              Expanded(
+                child: Obx(() => Slider(
+                      value: songPlayerController.silderValue.value
+                          .clamp(0.0, songPlayerController.silderValue.value),
+                      onChanged: (value) {
+                        songPlayerController.silderValue.value = value;
+                        Duration songPosition = Duration(
+                          seconds: value.toInt(),
+                        );
+                        songPlayerController.changeSongSlider(songPosition);
+                      },
+                      min: 0,
+                      max: songPlayerController.sliderMaxValue.value,
+                    )),
+              ),
+              Text(
+                songPlayerController.totalTime.value,
+                style: theme.textTheme.bodySmall,
+              ),
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -30,9 +51,14 @@ class SongControllerButton extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SvgPicture.asset(
-              'assets/icons/back.svg',
-              width: 20,
+            InkWell(
+              onTap: () {
+                songDataController.playPreviousSong();
+              },
+              child: SvgPicture.asset(
+                'assets/icons/back.svg',
+                width: 20,
+              ),
             ),
             Obx(
               () => songPlayerController.isPlaying.value
@@ -75,9 +101,14 @@ class SongControllerButton extends StatelessWidget {
                       ),
                     ),
             ),
-            SvgPicture.asset(
-              'assets/icons/next.svg',
-              width: 20,
+            InkWell(
+              onTap: () {
+                songDataController.playNextSong();
+              },
+              child: SvgPicture.asset(
+                'assets/icons/next.svg',
+                width: 20,
+              ),
             ),
           ],
         ),
@@ -87,14 +118,34 @@ class SongControllerButton extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SvgPicture.asset(
-              'assets/icons/suffle.svg',
-              width: 20,
+            Obx(
+              () => InkWell(
+                onTap: () {
+                  songPlayerController.playRandomSong();
+                },
+                child: SvgPicture.asset(
+                  'assets/icons/suffle.svg',
+                  width: 20,
+                  // ignore: deprecated_member_use
+                  color: songPlayerController.isSuffle.value
+                      ? primaryColor
+                      : labelColor,
+                ),
+              ),
             ),
-            SvgPicture.asset(
-              'assets/icons/repeat.svg',
-              width: 20,
-            ),
+            Obx(() => InkWell(
+                  onTap: () {
+                    songPlayerController.setLoopSong();
+                  },
+                  child: SvgPicture.asset(
+                    'assets/icons/repeat.svg',
+                    width: 20,
+                    // ignore: deprecated_member_use
+                    color: songPlayerController.isLoop.value
+                        ? primaryColor
+                        : labelColor,
+                  ),
+                )),
             SvgPicture.asset(
               'assets/icons/songbook.svg',
               width: 20,

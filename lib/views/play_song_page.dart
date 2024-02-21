@@ -5,11 +5,11 @@ import 'package:audio_player/components/song_details.dart';
 import 'package:flutter/material.dart';
 
 class PlaySongPage extends StatelessWidget {
-  const PlaySongPage({super.key});
+  const PlaySongPage(
+      {super.key,});
 
   @override
   Widget build(BuildContext context) {
-    
     return const Scaffold(
       body: SafeArea(
           child: Padding(
@@ -27,8 +27,8 @@ class PlaySongPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-           SongDetails(),
-           SizedBox(
+            SongDetails(),
+            SizedBox(
               height: 10,
             ),
             Spacer(),
