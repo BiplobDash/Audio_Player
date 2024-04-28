@@ -1,6 +1,5 @@
 import 'package:audio_player/controller/song_player_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SongDetails extends StatelessWidget {
@@ -13,21 +12,6 @@ class SongDetails extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: [
-            SvgPicture.asset('assets/icons/play_outline.svg'),
-            const SizedBox(
-              width: 10,
-            ),
-            Text(
-              '210 plays',
-              style: theme.textTheme.bodySmall,
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(
@@ -38,10 +22,6 @@ class SongDetails extends StatelessWidget {
                   style: theme.textTheme.bodyLarge,
                 ),
               ),
-            ),
-            SvgPicture.asset(
-              'assets/icons/download.svg',
-              width: 25,
             ),
           ],
         ),

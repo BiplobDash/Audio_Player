@@ -146,14 +146,14 @@ class SongControllerButton extends StatelessWidget {
                         : labelColor,
                   ),
                 )),
-            SvgPicture.asset(
-              'assets/icons/songbook.svg',
-              width: 20,
-            ),
-            SvgPicture.asset(
-              'assets/icons/heart.svg',
-              width: 20,
-            ),
+            // SvgPicture.asset(
+            //   'assets/icons/songbook.svg',
+            //   width: 20,
+            // ),
+            // SvgPicture.asset(
+            //   'assets/icons/heart.svg',
+            //   width: 20,
+            // ),
           ],
         )
       ],

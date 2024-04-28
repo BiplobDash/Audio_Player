@@ -53,17 +53,30 @@ class SongAndVolume extends StatelessWidget {
             annotations: [
               GaugeAnnotation(
                 horizontalAlignment: GaugeAlignment.center,
-                widget: Container(
-                  width: 280,
-                  height: 280,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1000),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/cover.jpg'),
-                    ),
-                    color: divColor,
-                  ),
-                ),
+                widget: songPlayerController.isCouldSongPlaying.value
+                    ? Container(
+                        width: 280,
+                        height: 280,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1000),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                songPlayerController.albumUrl.value),
+                          ),
+                          color: divColor,
+                        ),
+                      )
+                    : Container(
+                        width: 280,
+                        height: 280,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1000),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/cover.jpg'),
+                          ),
+                          color: divColor,
+                        ),
+                      ),
               )
             ],
           ),

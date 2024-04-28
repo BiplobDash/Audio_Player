@@ -17,6 +17,8 @@ dependencies:
   get: 
   permission_handler: 
   just_audio: 
+  firebase_core: 
+  cloud_firestore: 
 
 dev_dependencies:
   flutter_test:

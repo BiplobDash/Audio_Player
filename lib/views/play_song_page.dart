@@ -29,9 +29,8 @@ class PlaySongPage extends StatelessWidget {
             ),
             SongDetails(),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
-            Spacer(),
             SongControllerButton(),
           ],
         ),

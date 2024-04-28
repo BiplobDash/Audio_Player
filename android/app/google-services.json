@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "584425511335",
+    "project_id": "vedic-music-2e696",
+    "storage_bucket": "vedic-music-2e696.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584425511335:android:a3016fae6ae622f3b67e82",
+        "android_client_info": {
+          "package_name": "com.example.audio_player"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-RCxytBt6goakHnrOxwgA4NFpY9rxsS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
